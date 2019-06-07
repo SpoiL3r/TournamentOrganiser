@@ -1,0 +1,24 @@
+﻿<Window x:Class="TournamentOrganiserACS.CreatePrize"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TournamentOrganiserACS"
+        mc:Ignorable="d"
+        Title="CreatePrize" Height="450" Width="900" Background="White">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+        <Grid Height="419">
+            <Label Content="Create Prize" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="215" FontSize="36"/>
+            <StackPanel  Height="328" Margin="144,63,148,0" HorizontalAlignment="Center" Width="300">
+                <TextBlock x:Name="Tblk_placeNumber" TextWrapping="Wrap" Text="Place Number" Height="23"/>
+                <TextBox x:Name="Tbx_placeNumberValue" Height="25" TextWrapping="Wrap"/>
+                <TextBlock x:Name="Tblk_placeName" TextWrapping="Wrap" Text="Place Name" Height="20" Margin="0,5"/>
+                <TextBox x:Name="Tbx_placeNameValue" Height="25" TextWrapping="Wrap"/>
+                <TextBlock x:Name="Tblk_prizeAmount" TextWrapping="Wrap" Text="Prize Amount" Height="19" Margin="0,5"/>
+                <TextBox x:Name="Tbx_prizeAmountValue" Height="26" TextWrapping="Wrap" Margin="0,5" Text="0"/>
+                <Button x:Name="Btn_createPrize" Content="Create Prize"   Height="28" VerticalAlignment="Bottom" Margin="38,20,0,20" HorizontalAlignment="Left" Width="218" Click="Btn_createPrize_Click"/>
+            </StackPanel>
+
+        </Grid>
+    </StackPanel>
+</Window>
