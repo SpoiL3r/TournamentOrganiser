@@ -18,7 +18,7 @@
                 <Grid>
                     <GroupBox x:Name="Gpbx_addNewMember" Header="Add New Member" Height="173"  Margin="1,10,67,0" Padding="10" FontWeight="Bold" VerticalAlignment="Top"/>
                     <StackPanel Orientation="Horizontal" Margin="22,31,35,10">
-                        <Button x:Name="Btn_createMember" Content="Create Member" Width="119"    Margin="70,115,0,10" RenderTransformOrigin="1.062,0.95" HorizontalAlignment="Center"/>
+                        <Button x:Name="Btn_createMember" Content="Create Member" Width="119"    Margin="70,115,0,10" RenderTransformOrigin="1.062,0.95" HorizontalAlignment="Center" Click="Btn_createMember_Click"/>
                     </StackPanel>
                     <TextBlock x:Name="Tblk_firstName" HorizontalAlignment="Left" Margin="30,34,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top" RenderTransformOrigin="0.49,0.125"/>
                     <TextBox x:Name="Tbx_firstNameValue" HorizontalAlignment="Left" Height="23" Margin="92,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
