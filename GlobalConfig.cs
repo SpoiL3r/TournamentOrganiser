@@ -13,7 +13,7 @@ namespace TournamentOrganiserACS
         {
             if (db == DatabaseType.TextFile)
             {
-                // TODO: Create Text File Connection
+                
                 TextConnector text = new TextConnector();
                 Connection.Add(text);
 

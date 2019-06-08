@@ -14,7 +14,7 @@
                 <TextBox x:Name="Tbx_teamNameValue" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Margin="0,5,0,0"/>
                 <Label x:Name="Lbl_selectTeamMember"  HorizontalAlignment="Left"  Content="Select Team  Member" VerticalAlignment="Top" RenderTransformOrigin="0.646,4.285"/>
                 <ComboBox x:Name="Cbx_selectTeamMemberDropDown" HorizontalAlignment="Left" VerticalAlignment="Top" Width="234" RenderTransformOrigin="0.16,1.142" Margin="0,5,0,0"/>
-                <Button x:Name="Btn_addMember" Content="Add Member" HorizontalAlignment="Center"   Width="115" RenderTransformOrigin="-0.062,0.178" Margin="94,5"/>
+                <Button x:Name="Btn_addMember" Content="Add Member" HorizontalAlignment="Center"   Width="115" RenderTransformOrigin="-0.062,0.178" Margin="94,5" Click="Btn_addMember_Click"/>
                 <Grid>
                     <GroupBox x:Name="Gpbx_addNewMember" Header="Add New Member" Height="173"  Margin="1,10,67,0" Padding="10" FontWeight="Bold" VerticalAlignment="Top"/>
                     <StackPanel Orientation="Horizontal" Margin="22,31,35,10">
@@ -37,9 +37,9 @@
             <StackPanel Margin="413,84,216.6,22" Orientation="Vertical">
                 <Label HorizontalAlignment="Left"  Content="Players List" VerticalAlignment="Top"/>
                 <ListBox x:Name="Lbx_teamMembersListBox" HorizontalAlignment="Left" Height="237" VerticalAlignment="Top" Width="264"/>
-                <Button x:Name="Btn_createTeam" Content="Create Team" HorizontalAlignment="Center" Margin="57,10,57.8,0"  Width="150" Height="31"/>
+                <Button x:Name="Btn_createTeam" Content="Create Team" HorizontalAlignment="Center" Margin="57,10,57.8,0"  Width="150" Height="31" Click="Btn_createTeam_Click"/>
             </StackPanel>
-            <Button x:Name="Btn_deleteSelectedMember" Content="Delete Selected" HorizontalAlignment="Left" Margin="693,195,0,0" VerticalAlignment="Top" Width="90" Height="38"/>
+            <Button x:Name="Btn_deleteSelectedMember" Content="Remove Selected" HorizontalAlignment="Left" Margin="693,195,0,0" VerticalAlignment="Top" Width="95" Height="38" Click="Btn_deleteSelectedMember_Click"/>
 
 
 

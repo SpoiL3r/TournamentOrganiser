@@ -13,5 +13,12 @@ namespace TournamentOrganiserACS
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public string MobileNumber { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return $"{ FirstName } { LastName }";
+            }
+        }
     }
 }

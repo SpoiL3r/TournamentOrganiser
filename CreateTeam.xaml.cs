@@ -19,9 +19,28 @@ namespace TournamentOrganiserACS
     /// </summary>
     public partial class CreateTeam : Window
     {
+        private List<PersonModel> availableTeamMembers = GlobalConfig.Connection[0].GetPerson_All();
+        private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
+
         public CreateTeam()
         {
             InitializeComponent();
+
+            WireUpLists();
+        }
+
+       
+        private void WireUpLists()
+        {
+            Cbx_selectTeamMemberDropDown.ItemsSource = null;
+
+            Cbx_selectTeamMemberDropDown.ItemsSource = availableTeamMembers;
+            Cbx_selectTeamMemberDropDown.DisplayMemberPath = "FullName";
+
+            Lbx_teamMembersListBox.ItemsSource = null;
+
+            Lbx_teamMembersListBox.ItemsSource = selectedTeamMembers;
+            Lbx_teamMembersListBox.DisplayMemberPath = "FullName";
         }
 
         private void Btn_createMember_Click(object sender, RoutedEventArgs e)
@@ -34,10 +53,12 @@ namespace TournamentOrganiserACS
                 p.EmailAddress = Tbx_emailValue.Text;
                 p.MobileNumber = Tbx_mobileNumberValue.Text;
 
-                foreach (IDataConnection db in GlobalConfig.Connection)
-                {
-                    db.CreatePerson(p);
-                }
+                p = GlobalConfig.Connection[0].CreatePerson(p);
+                selectedTeamMembers.Add(p);
+
+                WireUpLists();
+
+
 
                 Tbx_firstNameValue.Text = "";
                 Tbx_lastNameValue.Text = "";
@@ -74,6 +95,43 @@ namespace TournamentOrganiserACS
             }
 
             return true;
+        }
+
+        private void Btn_addMember_Click(object sender, RoutedEventArgs e)
+        {
+            PersonModel p = (PersonModel)Cbx_selectTeamMemberDropDown.SelectedItem;
+            if(p!= null)
+            {
+                availableTeamMembers.Remove(p);
+                selectedTeamMembers.Add(p);
+
+                WireUpLists();
+            }
+        }
+
+        private void Btn_deleteSelectedMember_Click(object sender, RoutedEventArgs e)
+        {
+            PersonModel p = (PersonModel)Lbx_teamMembersListBox.SelectedItem;
+
+            if(p != null)
+            {
+                selectedTeamMembers.Remove(p);
+                availableTeamMembers.Add(p);
+
+                WireUpLists();
+            }
+        }
+
+        private void Btn_createTeam_Click(object sender, RoutedEventArgs e)
+        {
+            TeamModel t = new TeamModel();
+
+            t.TeamName = Tbx_teamNameValue.Text;
+            t.TeamMembers = selectedTeamMembers;
+
+            t = GlobalConfig.Connection[0].CreateTeam(t);
+
+            //TODO: IF not closing after creation , reset the window.
         }
     }
 }
