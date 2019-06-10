@@ -20,18 +20,40 @@ namespace TournamentOrganiserACS
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<TournamentModel> tournaments;
         public MainWindow()
         {
             InitializeComponent();
             GlobalConfig.InitializeConnections(DatabaseType.TextFile);
+            tournaments = GlobalConfig.Connection[0].GetTournament_All();
+            WireUpLists();
         }
         
+        private void WireUpLists()
+        {
+            Cbx_loadTournamentDropdown.ItemsSource = tournaments;
+            Cbx_loadTournamentDropdown.DisplayMemberPath = "TournamentName";
+        }
 
         private void Btn_Create_Tournament(object sender, RoutedEventArgs e)
         {
             CreateTournament createTournament = new CreateTournament();
             createTournament.Show();
-            this.Close();
+            
+        }
+
+        private void Cbx_loadTournamentDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Btn_loadTournament_Click(object sender, RoutedEventArgs e)
+        {
+            TournamentModel tm =(TournamentModel)Cbx_loadTournamentDropdown.SelectedItem;
+
+            GameTracker gt = new GameTracker(tm);
+
+            gt.Show();
         }
     }
 }

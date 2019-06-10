@@ -9,8 +9,8 @@
     <Grid>
         <StackPanel Margin="156,137,160.6,31" Orientation="Vertical" HorizontalAlignment="Center">
             <TextBlock x:Name="Tblk_loadExistingTournament" Text = "Load Existing Tournament" Margin = "51,0,50,0" FontSize="14" Height="31"/>
-            <ComboBox x:Name="Cbx_loadTournamentDropdown" HorizontalAlignment="Center" VerticalAlignment="Top" Width="275" Height="35"/>
-            <Button x:Name="Btn_loadTournament" Content = "Load" Height = "30" Margin="10,10,10,10" Width="100"/>
+            <ComboBox x:Name="Cbx_loadTournamentDropdown" HorizontalAlignment="Center" VerticalAlignment="Top" Width="275" Height="35" SelectionChanged="Cbx_loadTournamentDropdown_SelectionChanged"/>
+            <Button x:Name="Btn_loadTournament" Content = "Load" Height = "30" Margin="10,10,10,10" Width="100" Click="Btn_loadTournament_Click"/>
 
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment ="Center">

@@ -8,6 +8,13 @@ namespace TournamentOrganiserACS
 {
     public static class GlobalConfig
     {
+        public const string PrizesFile = "PrizeModels.csv";
+        public const string PeopleFile = "PersonModels.csv";
+        public const string TeamFile = "TeamModels.csv";
+        public const string TournamentFile = "TournamentModels.csv";
+        public const string MatchupFile = "MatchupModels.csv";
+        public const string MatchupEntryFile = "MatchupEntryModels.csv";
+
         public static List<IDataConnection> Connection { get; private set; } = new List<IDataConnection>();
         public static void InitializeConnections(DatabaseType db)
         {

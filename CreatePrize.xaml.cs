@@ -19,9 +19,12 @@ namespace TournamentOrganiserACS
     /// </summary>
     public partial class CreatePrize : Window
     {
-        public CreatePrize()
+        IPrizeRequester callingWindow;
+
+        public CreatePrize(IPrizeRequester caller)
         {
             InitializeComponent();
+            callingWindow = caller;
         }
 
         private void Btn_createPrize_Click(object sender, RoutedEventArgs e)
@@ -29,15 +32,15 @@ namespace TournamentOrganiserACS
             if (Validate())
             {
                 PrizeModel model = new PrizeModel(Tbx_placeNameValue.Text, Tbx_placeNumberValue.Text, Tbx_prizeAmountValue.Text);
-                
-                foreach(IDataConnection db in GlobalConfig.Connection)
-                {
-                    db.CreatePrize(model);
-                }
 
-                Tbx_placeNameValue.Text = "";
-                Tbx_placeNumberValue.Text = "";
-                Tbx_prizeAmountValue.Text = "0"; 
+                GlobalConfig.Connection[0].CreatePrize(model);
+                callingWindow.PrizeComplete(model);
+                this.Close();
+                
+
+               // Tbx_placeNameValue.Text = "";
+               // Tbx_placeNumberValue.Text = "";
+               // Tbx_prizeAmountValue.Text = "0"; 
             }
             else
             {

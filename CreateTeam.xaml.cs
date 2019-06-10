@@ -21,10 +21,12 @@ namespace TournamentOrganiserACS
     {
         private List<PersonModel> availableTeamMembers = GlobalConfig.Connection[0].GetPerson_All();
         private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
-
-        public CreateTeam()
+        private ITeamRequester callingWindow;
+        public CreateTeam(ITeamRequester caller)
         {
             InitializeComponent();
+
+            callingWindow = caller;
 
             WireUpLists();
         }
@@ -129,9 +131,12 @@ namespace TournamentOrganiserACS
             t.TeamName = Tbx_teamNameValue.Text;
             t.TeamMembers = selectedTeamMembers;
 
-            t = GlobalConfig.Connection[0].CreateTeam(t);
+            GlobalConfig.Connection[0].CreateTeam(t);
 
-            //TODO: IF not closing after creation , reset the window.
+            callingWindow.TeamComplete(t);
+            this.Close();
+
+            
         }
     }
 }

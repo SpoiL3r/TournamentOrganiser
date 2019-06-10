@@ -8,8 +8,11 @@
         Title="GameTracker" Height="450" Width="900" Background="White">
     <StackPanel  Orientation="Vertical">
         <Grid Height="420">
-            <Label x:Name="Lbl_tournamentHeader" Content="Tournament:" HorizontalAlignment="Left" Margin="79,10" VerticalAlignment="Top" FontSize="36"/>
-            <ComboBox x:Name="Cbx_roundDropDown" HorizontalAlignment="Left" Margin="128,79,0,0" VerticalAlignment="Top" Width="199" RenderTransformOrigin="0.3,0.661" SelectionChanged="ComboBox_SelectionChanged"/>
+            <StackPanel Orientation="Horizontal" Margin="75,10,0,0">
+            <Label x:Name="Lbl_tournamentHeader" Content="Tournament:" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="36"/>
+            <Label x:Name="Lbl_tournamentName" Content="&lt;none&gt;" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="36"/>
+            </StackPanel>
+            <ComboBox x:Name="Cbx_roundDropDown" HorizontalAlignment="Left" Margin="128,79,0,0" VerticalAlignment="Top" Width="199" RenderTransformOrigin="0.3,0.661" SelectionChanged="ComboBox_SelectionChanged" />
             <CheckBox x:Name="Chkbx_unplayedOnly" Content="Unplayed Only" HorizontalAlignment="Left" Margin="128,106,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.102,0.711"/>
             <ListBox x:Name="Lbx_matchup" HorizontalAlignment="Left" Height="237" Margin="79,140,0,0" VerticalAlignment="Top" Width="248"/>
             <TextBox x:Name="Tbx_teamOneScore" HorizontalAlignment="Left" Height="23" Margin="496,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -20,7 +23,7 @@
             <Label x:Name="Lbl_teamOneScore" Content="Score" HorizontalAlignment="Left" Margin="433,164,0,0" VerticalAlignment="Top"/>
             <Label x:Name="Lbl_teamTwoScore" Content="Score" HorizontalAlignment="Left" Margin="433,250,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.41,2.423"/>
             <Label x:Name="Lbl_Vs" Content="-VS-" HorizontalAlignment="Left" Margin="521,201,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="Lbl_tournamentName" Content="&lt;none&gt;" HorizontalAlignment="Right" Margin="0,10,452,0" VerticalAlignment="Top" FontSize="36"/>
+            
             <Label x:Name="Lbl_round" Content="Round" HorizontalAlignment="Left" Margin="84,79,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.615,-2.808"/>
 
         </Grid>

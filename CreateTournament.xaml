@@ -17,9 +17,9 @@
                 <Label x:Name="Lbl_entryFee" HorizontalAlignment="Left"  Content="Entry Fee" VerticalAlignment="Top" Height="25" Width="116" Margin="0,10"/>
                 <TextBox x:Name="Tbx_entryFeeValue" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <Label x:Name="Lbl_seclectTeam" HorizontalAlignment="Left"  Content="Select Team" VerticalAlignment="Top" Height="23" Width="116" Margin="0,10"/>
-                <ComboBox x:Name="Cbx_selectTeamDropDown" HorizontalAlignment="Left" VerticalAlignment="Top" Width="208"/>
+                <ComboBox x:Name="Cbx_selectTeamDropDown" HorizontalAlignment="Left" VerticalAlignment="Top" Width="208" SelectionChanged="Cbx_selectTeamDropDown_SelectionChanged"/>
                 <StackPanel Height="40" Orientation="Horizontal">
-                    <Button Content="Add Team" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="5,5,0,0" />
+                    <Button x:Name="Btn_addTeam" Content="Add Team" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="5,5,0,0" Click="Btn_addTeam_Click" />
                     <Button Click="Btn_Create_Team" Content="Create New" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Margin="52,5,0,5" />
                 </StackPanel>
                 <Button x:Name="Btn_createPrize" Click="Btn_Create_Prize" Content="Create Prize" HorizontalAlignment="Left" VerticalAlignment="Top" Width="204" Height="30" Margin="0,20" />
@@ -30,11 +30,11 @@
                 <ListBox x:Name="Lbx_tournamentPlayers" HorizontalAlignment="Left" Height="121" VerticalAlignment="Top" Width="271" Margin="0,5"/>
                 <Label x:Name="Lbl_prizes" HorizontalAlignment="Left"  Content="Prizes" VerticalAlignment="Top"/>
                 <ListBox x:Name="Lbx_prizes" HorizontalAlignment="Left" Height="71" VerticalAlignment="Top" Width="271" Margin="0,5"/>
-                <Button x:Name="Btn_createTournament" Content="Create Tournament" HorizontalAlignment="Left" VerticalAlignment="Top" Width="271" Height="42" RenderTransformOrigin="0.505,0.877" Margin="0,10"/>
+                <Button x:Name="Btn_createTournament" Content="Create Tournament" HorizontalAlignment="Left" VerticalAlignment="Top" Width="271" Height="42" RenderTransformOrigin="0.505,0.877" Margin="0,10" Click="Btn_createTournament_Click"/>
 
             </StackPanel>
-            <Button x:Name="Btn_deleteSelectedTeams" Content="Delete Selected"  Margin="700,142,5,0" VerticalAlignment="Top" Height="44"/>
-            <Button x:Name="Btn_deleteSelectedPrizes" Content="Delete Selected" Margin="700,268,5,0" VerticalAlignment="Top" Height="44" RenderTransformOrigin="0.475,0.174"/>
+            <Button x:Name="Btn_deleteSelectedTeams" Content="Remove Selected"  Margin="700,142,5,0" VerticalAlignment="Top" Height="44" Click="Btn_deleteSelectedTeams_Click"/>
+            <Button x:Name="Btn_deleteSelectedPrizes" Content="Remove Selected" Margin="700,268,5,0" VerticalAlignment="Top" Height="44" RenderTransformOrigin="0.475,0.174" Click="Btn_deleteSelectedPrizes_Click"/>
 
         </Grid>
         <Label Content="Label"/>
