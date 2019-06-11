@@ -29,6 +29,10 @@ namespace TournamentOrganiserACS
 
             tournament = tournamentModel;
 
+            WireUpRoundsLists();
+
+            WireUpMatchupLists();
+
             LoadTournamentData();
 
             LoadRounds();
@@ -43,13 +47,19 @@ namespace TournamentOrganiserACS
             Lbl_tournamentName.Content = tournament.TournamentName;
         }
 
-        private void WireUpLists()
+        private void WireUpRoundsLists()
         {
             if(Cbx_roundDropDown.ItemsSource == null)
             {
                 Cbx_roundDropDown.ItemsSource = rounds;
+               
             }
 
+           
+        }
+
+        private void WireUpMatchupLists()
+        {
             Lbx_matchup.ItemsSource = null;
             Lbx_matchup.ItemsSource = selectedMatchups;
             Lbx_matchup.DisplayMemberPath = "DisplayName";
@@ -57,7 +67,7 @@ namespace TournamentOrganiserACS
 
         private void LoadRounds()
         {
-            rounds = new List<int>();
+            rounds.Clear();
 
             rounds.Add(1);
             int currentRound = 1;
@@ -66,12 +76,13 @@ namespace TournamentOrganiserACS
             {
                 if(matchups.First().MatchupRound > currentRound)
                 {
-                    selectedMatchups = matchups;
+                    currentRound = matchups.First().MatchupRound;
+                    rounds.Add(currentRound);
 
                 }
             }
 
-            WireUpLists();
+            WireUpRoundsLists();
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -93,9 +104,54 @@ namespace TournamentOrganiserACS
 
                     }
                 }
-            }
 
-            WireUpLists();
+            }
+            WireUpMatchupLists();
+
+
+        }
+
+        private void LoadMatchupSelectionChanged()
+        {
+            MatchupModel m = (MatchupModel)Lbx_matchup.SelectedItem;
+            for (int i = 0; i < m.Entries.Count; i++)
+            {
+                if (i == 0)
+                {
+                    if (m.Entries[0].TeamCompeting != null)
+                    {
+                        Lbl_teamOnename.Content = m.Entries[0].TeamCompeting.TeamName;
+                        Tbx_teamOneScore.Text = m.Entries[0].Score.ToString();
+
+                        Lbl_teamTwoName.Content = "Bye";
+                        Tbx_teamTwoScore.Text = "0";
+                    }
+                    else
+                    {
+                        Lbl_teamOnename.Content = "Not yet set";
+                        Tbx_teamOneScore.Text = "";
+                    }
+                }
+
+                if (i == 1)
+                {
+                    if (m.Entries[1].TeamCompeting != null)
+                    {
+                        Lbl_teamTwoName.Content = m.Entries[1].TeamCompeting.TeamName;
+                        Tbx_teamTwoScore.Text = m.Entries[1].Score.ToString();
+                    }
+                    else
+                    {
+                        Lbl_teamTwoName.Content = "Not yet set";
+                        Tbx_teamTwoScore.Text = "";
+                    }
+                }
+            }
+        }
+
+        private void Lbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoadMatchupSelectionChanged();
         }
     }
 }
